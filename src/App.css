@@ -1,38 +1,355 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: #ececec;
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#root, .App, .main {
+  width: 100%;
+  height: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.card {
+  width: 80%;
+  height: 85%;
+  border: 1px solid #252525;
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-box-shadow: 20px 25px 3px rgba(37, 37, 37, 0.5);
+          box-shadow: 20px 25px 3px rgba(37, 37, 37, 0.5);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.card.popup {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  width: 90%;
+  -webkit-box-shadow: 0px 0px 0px transparent;
+          box-shadow: 0px 0px 0px transparent;
+  height: 90%;
+}
+
+.card.popup .cardContent #contents {
+  height: 555px;
+}
+
+#toolbar {
+  width: 100%;
+  height: 30px;
+  background: #f0f0f0;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#toolbar .bar {
+  margin-left: 10px;
+}
+
+#toolbar .bar .red-color {
+  background: #e92f2f;
+  cursor: not-allowed;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #000;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 3px;
+}
+
+#toolbar .bar .yellow-color {
+  background: #f0f014;
+  cursor: not-allowed;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #000;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 3px;
+}
+
+#toolbar .bar .green-color {
+  background: #089708;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #000;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 3px;
+}
+
+#toolbar p {
+  color: #333;
+  text-shadow: 1px 1px #ececec;
+}
+
+#toolbar #e {
+  width: 100px;
+}
+
+.cardContent {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cardContent header {
+  width: 100%;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cardContent header .file {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cardContent header .file div {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #202020;
+  width: 50%;
+  height: 100%;
+}
+
+.cardContent header .file div:first-child {
+  border: 1px solid transparent;
+  border-top: 1px solid #202020;
+  background: #003c64;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #dddddd;
+  text-shadow: 1px 1px #2e2e2e;
+}
+
+.cardContent header .file div:last-child {
+  background: #01304b;
+}
+
+.cardContent header .file:first-child div:first-child {
+  border-left: 3px solid #00c3ff;
+}
+
+.cardContent #contents {
+  width: 100%;
+  height: 520px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cardContent #contents #editor {
+  background: #003c64;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: 1px solid black;
+  border-top: 1px solid transparent;
+  outline: none;
+  padding: 35px 50px;
+  color: white;
+  font-size: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.356) rgba(255, 255, 255, 0);
+  line-height: 1.5;
+  text-shadow: 1px 1px #000;
+}
+
+.cardContent #contents #preview {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 35px 50px;
+  padding-right: 40px;
+  word-wrap: break-word;
+  width: 100%;
+  height: 100%;
+  background: #e9e9df;
+  overflow-y: auto;
+}
+
+.cardContent #contents #preview * {
+  margin: 20px 0;
+  text-shadow: 1px 1px #fff;
+}
+
+.cardContent #contents #preview pre code {
+  display: inline-block;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.cardContent #contents #preview code {
+  background: white;
+}
+
+.cardContent #contents #preview details summary {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.cardContent #contents #preview a {
+  color: #5f5f5f;
+}
+
+.cardContent #contents #preview a:active {
+  color: black;
+}
+
+.cardContent #contents #preview blockquote {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-left: 3px solid #333;
+  padding-left: 20px;
+  font-size: 25px;
+}
+
+.cardContent #contents #preview table {
+  border-collapse: collapse;
+}
+
+.cardContent #contents #preview td, .cardContent #contents #preview th {
+  border: 2px solid #333;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.cardContent footer {
+  width: 100%;
+  height: 30px;
+  background: #01304b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-left: 20px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.cardContent footer a {
+  color: white;
+  margin-left: 5px;
+  font-size: 13px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cardContent footer #copyright {
+  margin-right: 20px;
+  font-size: 13px;
 }
+/*# sourceMappingURL=App.css.map */

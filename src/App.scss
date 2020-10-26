@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@mixin flex($flex,$fd, $jc, $ai) {
+    display: $flex;
+    flex-direction: $fd;
+    justify-content: $jc;
+    align-items: $ai;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: rgb(236, 236, 236);
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+}
+#root,.App,.main {
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    @include flex(flex, row, center, center);
+    box-sizing: border-box;
+}
+.card {
+    width: 80%;
+    height: 85%;
+    border: 1px solid rgb(37, 37, 37);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 20px 25px 3px rgba(37, 37, 37, 0.5);
+    transition: .3s;
+    &.popup {
+        transform: scale(1.1);
+        width: 90%;
+        box-shadow: 0px 0px 0px transparent;
+        height: 90%;
+        .cardContent {
+            #contents {
+                height: 555px;
+            }
+        }
+    }
+}
+#toolbar {
+    width: 100%;
+    height: 30px;
+    background: rgb(240, 240, 240);
+    text-align: center;
+    @include flex(flex,row,space-between,center);
+    .bar {
+        margin-left: 10px;
+        @each $color in red, yellow, green {
+            .#{$color}-color {
+                @if $color == red {
+                    background: rgb(233, 47, 47);
+                    cursor: not-allowed;
+
+                }
+                @if $color == yellow {
+                    background: rgb(240, 240, 20);
+                    cursor: not-allowed;
+                }
+                @if $color == green {
+                    background: rgb(8, 151, 8);
+                    cursor: pointer;
+                }
+                box-sizing: border-box;
+                border: 1px solid #000;
+                width: 15px;
+                height: 15px;
+                display: inline-block;
+                border-radius: 50%;
+                margin: 0 3px;
+
+            }
+        }
+    }
+    p {
+        color: #333;
+        text-shadow: 1px 1px  rgb(236, 236, 236);
+    }
+    #e {
+        width: 100px;
+    }
+}
+
+.cardContent {
+    width: 100%;
+    @include flex(flex, column, center, center);
+    header {
+        width: 100%;
+        height: 40px;
+        @include flex(flex, row, center, center);
+        .file {
+            box-sizing: border-box;
+            width: 50%;
+            height: 100%;
+            @include flex(flex, row, center, center);
+            div {
+                box-sizing: border-box;
+                border: 1px solid rgb(32, 32, 32);
+                width: 50%;
+                height: 100%;   
+                &:first-child {
+                    border: 1px solid transparent;
+                    border-top: 1px solid rgb(32, 32, 32);
+                    background: rgb(0, 60, 100);
+                    @include flex(flex, row, center, center);
+                    color: rgb(221, 221, 221);
+                    text-shadow: 1px 1px  rgb(46, 46, 46);
+                }
+                &:last-child {
+                    background: rgb(1, 48, 75);
+                }
+            }
+            &:first-child {
+                div:first-child {
+                    border-left: 3px solid rgb(0, 195, 255);
+                }
+            }
+        }
+    }
+    #contents {
+        width: 100%;
+        height: 520px;
+        @include flex(flex, row, flex-start, center);
+        #editor {
+            background: rgb(0, 60, 100);
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            resize: none;
+            border: 1px solid black;
+            border-top: 1px solid transparent;
+            outline: none;
+            padding: 35px 50px;
+            color: white;
+            font-size: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.356) rgba(255, 255, 255, 0);
+            line-height: 1.5;
+            text-shadow: 1px 1px #000;
+        }
+        #preview {
+            box-sizing: border-box;
+            padding: 35px 50px;
+            padding-right: 40px;
+            word-wrap: break-word;
+            width: 100%;
+            height: 100%;
+            background: rgb(233, 233, 223);
+            overflow-y: auto;
+            * {
+                margin: 20px 0;
+                text-shadow: 1px 1px #fff;
+            }
+            pre {
+                code {
+                    display: inline-block;
+                    width: 100%;
+                    word-wrap: break-word;
+                    overflow-y: auto;
+                    background: #fff;
+                }
+            }
+            code {
+                background: rgb(255, 255, 255);
+            }
+            details {
+                summary {
+                    font-size: 18px;
+                    cursor: pointer;
+                }
+            }
+            a {
+                color: rgb(95, 95, 95);
+                &:active {
+                    color: rgb(0, 0, 0);
+                }
+            }
+            blockquote {
+                box-sizing: border-box;
+                border-left: 3px solid #333;
+                padding-left: 20px;
+                font-size: 25px;
+            }
+            table {
+                border-collapse: collapse;
+            }
+            td,th {
+                border: 2px solid #333;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    }
+    footer {
+        width: 100%;
+        height: 30px;
+        background: rgb(1, 48, 75);
+        @include flex(flex, row, space-between, center);
+        box-sizing: border-box;
+        padding-left:20px;
+        color: white;
+        a {
+            color: white;
+            margin-left: 5px;
+            font-size: 13px;
+        }
+        #copyright {
+            margin-right: 20px;
+            font-size: 13px;
+        }
+    }
+}
