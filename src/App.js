@@ -52,7 +52,7 @@ class Toolbar extends React.Component {
           <span className="yellow-color"></span>
           <span className="green-color" onClick={this.props.onClick}></span>
         </div>
-        <p>index.md</p>
+        <p>Markdown Previewer</p>
         <div id="e"></div>
       </header>
     )
